@@ -1,0 +1,21 @@
+// @include icon($icon-bars, false);
+
+@mixin icon($icon, $solid: true) {
+	font-family: "FA Solid", "FA Regular", "FA Brands";
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+	cursor: pointer;
+
+	@if $solid == false {
+		font-family: "FA Regular";
+	}
+
+	&:after {
+		content: $icon;
+	}
+}
