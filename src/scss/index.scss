@@ -4,9 +4,22 @@
 
 h1 {
 	color: white;
-	font-size: 36px;
+	font-size: 40px;
+	font-style: oblique;
 	display: flex;
 	justify-content: center;
+}
+
+h3 {
+	color: white;
+	font-weight: 600;
+}
+
+h6 {
+	color: $textareaTextColor;
+	font-size: 28px;
+	margin-top: auto;
+	text-decoration: underline;
 }
 
 body {
@@ -108,12 +121,11 @@ body {
 }
 
 button {
-	/* width: 100%; */
 	font-size: 24px;
 	text-align: center;
 	margin: 0 auto;
 	display: block;
-	padding: 0.75rem 1rem;
+	padding: 0.6rem 1rem;
 	margin-top: 0.4rem;
 	font-weight: 400;
 	text-align: center;

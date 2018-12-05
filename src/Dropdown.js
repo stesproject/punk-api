@@ -1,14 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ListElement from "ListElement";
+import {saveDropdownValue} from "Actions";
+import {connect} from "react-redux";
+import {uid} from "react-uid";
 
 class Dropdown extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+            text: "Name",
+			param: "beer_name"
+        };
+        
+		this.saveDropdownValue = this.saveDropdownValue.bind(this);
 	}
 
 	render() {
-		const {} = this.props;
+		const {listElements, dropdownValue} = this.props;
 
 		return (
 			<React.Fragment>
@@ -16,31 +25,12 @@ class Dropdown extends React.Component {
 					<ul>
 						<li>
 							<a id="filter" href="#">
-								Name
+								{dropdownValue.text}
 								<span className="arrow">&#9660;</span>
 							</a>
 
 							<ul className="sub-menu">
-								<li>
-									<a data-param="beer_name" href="#">
-										Name
-									</a>
-								</li>
-								<li>
-									<a data-param="yeast" href="#">
-										Yeast
-									</a>
-								</li>
-								<li>
-									<a data-param="malt" href="#">
-										Malt
-									</a>
-								</li>
-								<li>
-									<a data-param="food" href="#">
-										Food
-									</a>
-								</li>
+								{this.displayListElements(listElements)}
 							</ul>
 						</li>
 					</ul>
@@ -48,9 +38,24 @@ class Dropdown extends React.Component {
 			</React.Fragment>
 		);
 	}
+
+	displayListElements(listElements) {
+		return listElements.map((el) => <ListElement key={uid(el)} text={el.text} param={el.param} onClick={this.saveDropdownValue} />);
+    }
+    
+    saveDropdownValue(e) {
+        const {dispatch} = this.props;
+        
+		dispatch(saveDropdownValue({text: e.target.text, param:  e.target.dataset.param}));
+    }
 }
 
 Dropdown.propTypes = {
+    listElements: PropTypes.array.isRequired,
 };
 
-export default Dropdown;
+const mapStateToProps = (state) => ({
+	dropdownValue: state.dropdownValue
+});
+
+export default connect(mapStateToProps)(Dropdown);

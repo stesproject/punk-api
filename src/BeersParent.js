@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Image from "Image";
+import BeerCard from "BeerCard";
 import {uid} from "react-uid";
 
 class BeersParent extends React.Component {
@@ -12,17 +12,17 @@ class BeersParent extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<nav className="beersParent">{this.showImages()}</nav>
+				<nav className="beersParent">{this.showBeers()}</nav>
 			</React.Fragment>
 		);
 	}
 
-	showImages() {
+	showBeers() {
 		const {beers} = this.props;
 
 		if (beers.length <= 0) return;
 		
-		return beers.map((beers) => (<Image key={uid(beers)} source={beers.image} description={beers.description} id={beers.id} />));
+		return beers.map((beers) => (<BeerCard key={uid(beers)} source={beers.image} description={beers.description} name={beers.name} id={beers.id} />));
 	}
 }
 

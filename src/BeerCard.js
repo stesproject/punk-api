@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import Button from "Button";
 import {saveBeerDescription} from "Actions";
 
-class Image extends React.Component {
+class BeerCard extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -20,13 +20,14 @@ class Image extends React.Component {
 	}
 
 	render() {
-		const {source, description} = this.props;
+		const {source, description, name} = this.props;
 
 		return (
 			<React.Fragment>
 				<div className="beerCard">
 					<img src={source} width={this.IMG_WIDTH} height={this.IMG_HEIGHT} />
 					<div>
+						<h3>{name}</h3>
 						<textarea defaultValue={description} onBlur={this.onTextBlur} />
 						<Button text="Save" onClick={this.onButtonClick} />
 					</div>
@@ -50,7 +51,7 @@ class Image extends React.Component {
 	}
 }
 
-Image.propTypes = {
+BeerCard.propTypes = {
 	source: PropTypes.string.isRequired,
 	description: PropTypes.string,
 	id: PropTypes.number
@@ -61,4 +62,4 @@ const mapStateToProps = (state) => ({
 	beers: state.beers
 });
 
-export default connect(mapStateToProps)(Image);
+export default connect(mapStateToProps)(BeerCard);
