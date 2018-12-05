@@ -1,0 +1,18 @@
+.beerCard {
+    display: flex;
+    align-content: flex-start;
+    width: 32rem;
+    font-size: 14;
+    padding: 15px;
+}
+
+p {
+    color: $textareaTextColor;
+}
+
+textarea {
+    background-color: $textareaColor;
+    border: 0px;
+    color: $textareaTextColor;
+    height: 75%;
+}

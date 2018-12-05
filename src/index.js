@@ -1,5 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "App";
+import {createStore, applyMiddleware } from "redux";
+import {Provider} from "react-redux";
+import Beers from "Beers";
+import {reducer} from "Reducer";
+import thunk from 'redux-thunk';
+
+const store = createStore(reducer, applyMiddleware(thunk));
+
+const App = () => (
+	<Provider store={store}>
+		<Beers />
+	</Provider>
+);
 
 ReactDOM.render(<App />, document.getElementById("root"));
