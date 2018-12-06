@@ -34,6 +34,12 @@ body {
 	background-color: $search;
 }
 
+.downshift-dropdown {
+	min-height: 44;
+	justify-content: center;
+	background-color: $search;
+}
+
 .beersParent {
 	display: flex;
 	flex-wrap: wrap;
